@@ -4,8 +4,8 @@ tag: 1.11.2
 forceInstall: false
 
 installer:
-  repository: rancher/istio-installer
-  tag: 1.11.2-rancher1
+  repository: doflamingo721/istio-installer
+  tag: 1.11.2
 
 ##Native support for dns added in 1.8
 dns:
