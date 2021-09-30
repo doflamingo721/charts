@@ -21,8 +21,8 @@ global:
     pspEnabled: false
 
 jaeger:
-  repository: rancher/mirrored-jaegertracing-all-in-one
-  tag: 1.26.0
+  repository: jaegertracing/all-in-one
+  tag: 1.22.0
   # spanStorageType value can be "memory" and "badger" for all-in-one image
   spanStorageType: badger
   resources:
