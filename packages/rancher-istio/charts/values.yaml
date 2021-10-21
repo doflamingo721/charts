@@ -1,5 +1,5 @@
 overlayFile: ""
-tag: 1.11.3
+tag: 1.11.4
 ##Setting forceInstall: true will remove the check for istio version < 1.6.x and will not analyze your install cluster prior to install
 forceInstall: false
 
@@ -25,7 +25,7 @@ base:
 cni:
   enabled: false
   repository: rancher/mirrored-istio-install-cni
-  tag: 1.11.3
+  tag: 1.11.4
   logLevel: info
   excludeNamespaces:
   - istio-system
@@ -45,7 +45,7 @@ istiodRemote:
 pilot:
   enabled: true
   repository: rancher/mirrored-istio-pilot
-  tag: 1.11.3
+  tag: 1.11.4
 
 telemetry:
   enabled: true
@@ -57,10 +57,10 @@ global:
     systemDefaultRegistry: ""
   proxy:
     repository: rancher/mirrored-istio-proxyv2
-    tag: 1.11.3
+    tag: 1.11.4
   proxy_init:
     repository: rancher/mirrored-istio-proxyv2
-    tag: 1.11.3
+    tag: 1.11.4
   defaultPodDisruptionBudget:
     enabled: true
   rbac:

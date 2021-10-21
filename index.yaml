@@ -417,6 +417,34 @@ entries:
     urls:
     - assets/fleet-crd/fleet-crd-0.3.000.tgz
     version: 0.3.000
+  kiali-server:
+  - apiVersion: v2
+    appVersion: v1.41.0
+    created: "2021-10-21T13:59:28.134315979+05:30"
+    description: Kiali is an open source project for service mesh observability, refer
+      to https://www.kiali.io for details. This is installed as sub-chart with customized
+      values in Rancher's Istio.
+    digest: 936df442e0223a0beb0b83a506077e558b1c7befbe6c180cdc291acf219eb643
+    home: https://github.com/kiali/kiali
+    icon: https://raw.githubusercontent.com/kiali/kiali.io/master/themes/kiali/static/img/kiali_logo_masthead.png
+    keywords:
+    - istio
+    - kiali
+    - networking
+    - infrastructure
+    maintainers:
+    - email: kiali-users@googlegroups.com
+      name: rancher-kiali-server
+      url: https://kiali.io
+    name: kiali-server
+    sources:
+    - https://github.com/kiali/kiali
+    - https://github.com/kiali/kiali-ui
+    - https://github.com/kiali/kiali-operator
+    - https://github.com/kiali/helm-charts
+    urls:
+    - assets/rancher-kiali-server/kiali-server-100.0.2+up1.41.0.tgz
+    version: 100.0.2+up1.41.0
   longhorn:
   - annotations:
       catalog.cattle.io/auto-install: longhorn-crd=match
