@@ -4328,6 +4328,23 @@ entries:
       catalog.rancher.io/namespace: istio-system
       catalog.rancher.io/release-name: rancher-tracing
     apiVersion: v1
+    appVersion: 1.27.0
+    created: "2021-10-21T13:46:42.483103697+05:30"
+    description: A quick start Jaeger Tracing installation using the all-in-one demo.
+      This is not production qualified. Refer to https://www.jaegertracing.io/ for
+      details.
+    digest: f39309b5f0b29d54a149aeef6f7aab2d1b11da9e4943c9d8a4626cc3ea0bc6a4
+    name: rancher-tracing
+    urls:
+    - assets/rancher-tracing/rancher-tracing-100.0.2.tgz
+    version: 100.0.2
+  - annotations:
+      catalog.cattle.io/hidden: "true"
+      catalog.cattle.io/os: linux
+      catalog.rancher.io/certified: rancher
+      catalog.rancher.io/namespace: istio-system
+      catalog.rancher.io/release-name: rancher-tracing
+    apiVersion: v1
     appVersion: 1.26.0
     created: "2021-09-17T15:11:53.813169708+05:30"
     description: A quick start Jaeger Tracing installation using the all-in-one demo.
