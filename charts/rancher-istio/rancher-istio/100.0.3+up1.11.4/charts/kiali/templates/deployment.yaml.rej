@@ -1,0 +1,11 @@
+--- templates/deployment.yaml
++++ templates/deployment.yaml
+@@ -48,7 +48,7 @@
+       {{- end }}
+       {{- end }}
+       containers:
+-      - image: "{{ .Values.deployment.image_name }}:{{ .Values.deployment.image_version }}"
++      - image: "{{ template "system_default_registry" . }}{{ .Values.deployment.repository }}:{{ .Values.deployment.tag }}"
+         imagePullPolicy: {{ .Values.deployment.image_pull_policy | default "Always" }}
+         name: {{ include "kiali-server.fullname" . }}
+         command:
