@@ -2168,6 +2168,39 @@ entries:
     version: 6.6.401
   rancher-istio:
   - annotations:
+      catalog.cattle.io/certified: rancher
+      catalog.cattle.io/display-name: Istio
+      catalog.cattle.io/namespace: istio-system
+      catalog.cattle.io/os: linux
+      catalog.cattle.io/provides-gvr: networking.istio.io.virtualservice/v1beta1
+      catalog.cattle.io/rancher-version: '>= 2.6.0-0'
+      catalog.cattle.io/release-name: rancher-istio
+      catalog.cattle.io/requests-cpu: 710m
+      catalog.cattle.io/requests-memory: 2314Mi
+      catalog.cattle.io/type: cluster-tool
+      catalog.cattle.io/ui-component: istio
+    apiVersion: v1
+    appVersion: 1.11.4
+    created: "2021-10-25T11:28:34.353561449+05:30"
+    dependencies:
+    - condition: kiali.enabled
+      name: kiali
+      repository: file://./charts/kiali
+    - condition: tracing.enabled
+      name: tracing
+      repository: file://./charts/tracing
+    description: A basic Istio setup that installs with the istioctl. Refer to https://istio.io/latest/
+      for details.
+    digest: e8f7bb98de2cbf82b1817777f0d0ce644392894025c0918af00ce6750a65aefc
+    icon: https://charts.rancher.io/assets/logos/istio.svg
+    keywords:
+    - networking
+    - infrastructure
+    name: rancher-istio
+    urls:
+    - assets/rancher-istio/rancher-istio-100.0.3+up1.11.4.tgz
+    version: 100.0.3+up1.11.4
+  - annotations:
       catalog.cattle.io/auto-install: rancher-kiali-server-crd=100.0.0+up1.35.0
       catalog.cattle.io/certified: rancher
       catalog.cattle.io/display-name: Istio
