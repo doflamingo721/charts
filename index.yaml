@@ -1817,10 +1817,10 @@ entries:
       catalog.cattle.io/ui-component: rancher-cis-benchmark
     apiVersion: v1
     appVersion: v2.0.2
-    created: "2022-01-05T17:56:56.326845-08:00"
+    created: "2022-01-18T16:33:30.747177816+05:30"
     description: The cis-operator enables running CIS benchmark security scans on
       a kubernetes cluster
-    digest: 252c3af97c4f92b65f9c0805245a6f6e90d4c1dd8f785aee35d28bc5375ce8ec
+    digest: 7ced130fcc128033acac72022579e7a9a508410a70176fea2001bd9e9882f4a7
     icon: https://charts.rancher.io/assets/logos/cis-kube-bench.svg
     keywords:
     - security
