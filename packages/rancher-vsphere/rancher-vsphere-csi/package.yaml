@@ -1,2 +1,2 @@
-url: local
-version: 100.1.0+up2.3.0
+url: https://github.com/rayandas/vsphere-charts-1/releases/download/rancher-vsphere-csi-2.3.0/rancher-vsphere-csi-2.3.0.tgz
+version: 100.2.0+up2.3.0-rancher1
