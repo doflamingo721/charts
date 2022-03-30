@@ -19,7 +19,7 @@
    image_pull_policy: "Always"
    image_pull_secrets: []
 -  image_version: v1.48.0 # version like "v1.39" (see: https://quay.io/repository/kiali/kiali?tab=tags) or a digest hash
-+  tag: v1.48.0-rc1 # version like "v1.39" (see: https://quay.io/repository/kiali/kiali?tab=tags) or a digest hash
++  tag: v1.49.0-rc5 # version like "v1.39" (see: https://quay.io/repository/kiali/kiali?tab=tags) or a digest hash
    ingress:
      additional_labels: {}
      class_name: "nginx"
@@ -27,7 +27,7 @@
  
  server:
    port: 20001
-+  redirect_path: "/k8s/clusters/{{ .Values.global.cattle.clusterId }}/api/v1/namespaces/{{ .Release.Namespace }}/services/http:kiali:20001/proxy/kiali"
++  redirect_path: ""
    metrics_enabled: true
    metrics_port: 9090
    web_root: ""

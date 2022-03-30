@@ -17,7 +17,15 @@
  {{- end }}
  
  {{/*
-@@ -170,4 +177,27 @@
+@@ -84,6 +91,7 @@
+ {{- end }}
+ {{- end }}
+ 
++
+ {{/*
+ Determine the default identity cert file. There is no default if on k8s; only on OpenShift.
+ */}}
+@@ -170,4 +178,27 @@
  {{- else }}
    {{- .Release.Namespace }}
  {{- end }}
