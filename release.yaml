@@ -17,3 +17,5 @@ rancher-vsphere-cpi:
 - 100.3.0+up1.2.1
 rancher-vsphere-csi:
 - 100.3.0+up2.5.1-rancher1
+rancher-istio:
+- 100.2.0+up1.12.6
