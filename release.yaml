@@ -21,3 +21,7 @@ sriov:
 - 100.0.3+up0.1.0
 sriov-crd:
 - 100.0.3+up0.1.0
+rancher-gatekeeper:
+- 100.1.0+up3.7.1
+rancher-gatekeeper-crd:
+- 100.1.0+up3.7.1
