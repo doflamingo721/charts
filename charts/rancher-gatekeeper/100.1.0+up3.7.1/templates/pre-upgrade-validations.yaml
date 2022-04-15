@@ -1,0 +1,3 @@
+# {{- if .Values.image -}}
+# 	{{- required "The field image is deprecated. Use images instead." "" -}}
+# {{- end -}}
