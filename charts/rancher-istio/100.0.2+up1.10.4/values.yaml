@@ -86,3 +86,4 @@ kiali:
 tracing:
   enabled: false
   contextPath: "/jaeger"
+  
