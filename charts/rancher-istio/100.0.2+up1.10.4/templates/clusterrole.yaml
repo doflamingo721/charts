@@ -124,4 +124,3 @@ rules:
   - podsecuritypolicies
   verbs:
   - use
-  

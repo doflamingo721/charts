@@ -80,4 +80,3 @@ spec:
       {{- toYaml .Values.cni.excludeNamespaces | nindent 8 }}
       logLevel: {{ .Values.cni.logLevel }}
     {{- end }}
-    
