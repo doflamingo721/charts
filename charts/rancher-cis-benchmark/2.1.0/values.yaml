@@ -4,8 +4,8 @@
 
 image:
   cisoperator:
-    repository: rancher/cis-operator
-    tag: v1.0.9
+    repository: doflamingo721/cis-operator
+    tag: 1.0.10-rc1
   securityScan:
     repository: rancher/security-scan
     tag: v0.2.8
