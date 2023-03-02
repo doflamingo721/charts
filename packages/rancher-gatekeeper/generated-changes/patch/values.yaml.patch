@@ -5,19 +5,28 @@
      enabled: false
      image:
 -      repository: openpolicyagent/gatekeeper-crds
--      tag: v3.10.0
+-      tag: v3.11.0
 +      repository: rancher/kubectl
 +      tag: v1.20.2
        pullPolicy: IfNotPresent
        pullSecrets: []
      extraNamespaces: []
+@@ -50,7 +50,7 @@
+       "pod-security.kubernetes.io/enforce-version=v1.24"]
+   affinity: {}
+   tolerations: []
+-  nodeSelector: {kubernetes.io/os: linux}
++  nodeSelector: {}
+   resources: {}
+   securityContext:
+     allowPrivilegeEscalation: false
 @@ -66,7 +66,7 @@
      enabled: true
      extraRules: []
      image:
 -      repository: openpolicyagent/gatekeeper-crds
 +      repository: rancher/mirrored-openpolicyagent-gatekeeper-crds
-       tag: v3.10.0
+       tag: v3.11.0
        pullPolicy: IfNotPresent
        pullSecrets: []
 @@ -80,7 +80,7 @@
@@ -29,15 +38,31 @@
        tag: 7.83.1
        pullPolicy: IfNotPresent
        pullSecrets: []
-@@ -104,7 +104,7 @@
+@@ -89,7 +89,7 @@
+     insecureHTTPS: false
+   affinity: {}
+   tolerations: []
+-  nodeSelector: {kubernetes.io/os: linux}
++  nodeSelector: {}
+   securityContext:
+     allowPrivilegeEscalation: false
+     capabilities:
+@@ -104,13 +104,13 @@
      extraRules: []
      enabled: false
      image:
 -      repository: openpolicyagent/gatekeeper-crds
 +      repository: rancher/mirrored-openpolicyagent-gatekeeper-crds
-       tag: v3.10.0
+       tag: v3.11.0
        pullPolicy: IfNotPresent
        pullSecrets: []
+   affinity: {}
+   tolerations: []
+-  nodeSelector: {kubernetes.io/os: linux}
++  nodeSelector: {}
+   resources: {}
+   securityContext:
+     allowPrivilegeEscalation: false
 @@ -121,10 +121,13 @@
      runAsGroup: 999
      runAsNonRoot: true
@@ -45,7 +70,7 @@
 -image:
 -  repository: openpolicyagent/gatekeeper
 -  crdRepository: openpolicyagent/gatekeeper-crds
--  release: v3.10.0
+-  release: v3.11.0
 +images:
 +  gatekeeper:
 +    repository: rancher/mirrored-openpolicyagent-gatekeeper
@@ -56,7 +81,7 @@
    pullPolicy: IfNotPresent
    pullSecrets: []
  podAnnotations: {}
-@@ -159,7 +162,7 @@
+@@ -160,7 +163,7 @@
            weight: 100
    topologySpreadConstraints: []
    tolerations: []
@@ -64,7 +89,7 @@
 +  nodeSelector: {}
    resources:
      limits:
-       cpu: 1000m
+       memory: 512Mi
 @@ -192,7 +195,7 @@
    disableCertRotation: true
    affinity: {}
@@ -73,8 +98,17 @@
 +  nodeSelector: {}
    resources:
      limits:
-       cpu: 1000m
-@@ -232,10 +235,16 @@
+       memory: 512Mi
+@@ -217,7 +220,7 @@
+ crds:
+   affinity: {}
+   tolerations: []
+-  nodeSelector: {kubernetes.io/os: linux}
++  nodeSelector: {}
+   resources: {}
+   securityContext:
+     allowPrivilegeEscalation: false
+@@ -231,6 +234,14 @@
  pdb:
    controllerManager:
      minAvailable: 1
@@ -88,8 +122,4 @@
 +    tag: v1.20.2
  service: {}
  disabledBuiltins: ["{http.send}"]
--psp:
--  enabled: true
- upgradeCRDs:
-   enabled: true
-   extraRules: []
+ psp:

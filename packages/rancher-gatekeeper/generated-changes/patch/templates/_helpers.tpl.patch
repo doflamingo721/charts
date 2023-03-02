@@ -1,9 +1,30 @@
 --- charts-original/templates/_helpers.tpl
 +++ charts/templates/_helpers.tpl
-@@ -40,12 +40,35 @@
- {{- end }}
+@@ -45,7 +45,7 @@
+ */}}
+ {{- define "gatekeeper.postInstallWebhookProbeContainer" -}}
+ - name: webhook-probe-post
+-  image: "{{ .Values.postInstall.probeWebhook.image.repository }}:{{ .Values.postInstall.probeWebhook.image.tag }}"
++  image: "{{ template "system_default_registry" . }}{{ .Values.postInstall.probeWebhook.image.repository }}:{{ .Values.postInstall.probeWebhook.image.tag }}"
+   imagePullPolicy: {{ .Values.postInstall.probeWebhook.image.pullPolicy }}
+   args:
+     - "curl"
+@@ -68,6 +68,10 @@
+   resources:
+   {{- toYaml .Values.postInstall.resources | nindent 4 }}
+   securityContext:
++  {{- if .Values.enableRuntimeDefaultSeccompProfile }}
++    seccompProfile:
++      type: RuntimeDefault
++  {{- end }}
+     {{- if .Values.enableRuntimeDefaultSeccompProfile }}
+     seccompProfile:
+       type: RuntimeDefault
+@@ -87,3 +91,25 @@
+   secret:
+     secretName: {{ .Values.externalCertInjection.secretName }}
  {{- end -}}
- 
++
 +{{- define "system_default_registry" -}}
 +{{- if .Values.global.cattle.systemDefaultRegistry -}}
 +{{- printf "%s/" .Values.global.cattle.systemDefaultRegistry -}}
@@ -11,8 +32,7 @@
 +{{- "" -}}
 +{{- end -}}
 +{{- end -}}
-+
- {{/*
++ {{/*
 +Windows cluster will add default taint for linux nodes,
 +add below linux tolerations to workloads could be scheduled to those linux nodes
 +*/}}
@@ -26,25 +46,3 @@
 +{{- define "linux-node-selector" -}}
 +kubernetes.io/os: linux
 +{{- end -}}
-+
-+{{/*
- Output post install webhook probe container entry
- */}}
- {{- define "gatekeeper.postInstallWebhookProbeContainer" -}}
- - name: webhook-probe-post
--  image: "{{ .Values.postInstall.probeWebhook.image.repository }}:{{ .Values.postInstall.probeWebhook.image.tag }}"
-+  image: "{{ template "system_default_registry" . }}{{ .Values.postInstall.probeWebhook.image.repository }}:{{ .Values.postInstall.probeWebhook.image.tag }}"
-   imagePullPolicy: {{ .Values.postInstall.probeWebhook.image.pullPolicy }}
-   args:
-     - "curl"
-@@ -68,6 +91,10 @@
-   resources:
-   {{- toYaml .Values.postInstall.resources | nindent 4 }}
-   securityContext:
-+  {{- if .Values.enableRuntimeDefaultSeccompProfile }}
-+    seccompProfile:
-+      type: RuntimeDefault
-+  {{- end }}
-   {{- toYaml .Values.postInstall.securityContext | nindent 4 }}
-   volumeMounts:
-   - mountPath: /certs
