@@ -9,9 +9,9 @@
            imagePullPolicy: {{ .Values.postInstall.labelNamespace.image.pullPolicy }}
            args:
              - label
-@@ -63,12 +63,10 @@
-             {{- end }}
+@@ -81,12 +81,10 @@
              {{- toYaml .Values.postInstall.securityContext | nindent 12 }}
+         {{- end }}
        {{- with .Values.postInstall }}
 -      nodeSelector:
 -        {{- toYaml .nodeSelector | nindent 8 }}
@@ -24,7 +24,7 @@
        {{- end }}
  ---
  apiVersion: v1
-@@ -109,6 +107,12 @@
+@@ -127,6 +125,12 @@
        {{- range .Values.postInstall.labelNamespace.extraNamespaces }}
        - {{ . }}
        {{- end }}
