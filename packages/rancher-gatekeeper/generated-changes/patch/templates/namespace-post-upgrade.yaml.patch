@@ -9,9 +9,9 @@
            imagePullPolicy: {{ .Values.postUpgrade.labelNamespace.image.pullPolicy }}
            args:
              - label
-@@ -51,12 +51,10 @@
-           securityContext:
+@@ -73,12 +73,10 @@
              {{- toYaml .Values.postUpgrade.securityContext | nindent 12 }}
+         {{- end }}
        {{- with .Values.postUpgrade }}
 +      nodeSelector: {{ include "linux-node-selector" . | nindent 8 }}
 +      tolerations: {{ include "linux-node-tolerations" . | nindent 8 }}
@@ -24,7 +24,7 @@
        {{- end }}
  ---
  apiVersion: v1
-@@ -97,6 +95,12 @@
+@@ -119,6 +117,12 @@
        {{- range .Values.postUpgrade.labelNamespace.extraNamespaces }}
        - {{ . }}
        {{- end }}

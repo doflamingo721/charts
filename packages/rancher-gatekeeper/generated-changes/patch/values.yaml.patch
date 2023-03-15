@@ -5,21 +5,12 @@
      enabled: false
      image:
 -      repository: openpolicyagent/gatekeeper-crds
--      tag: v3.10.0
+-      tag: v3.11.0
 +      repository: rancher/kubectl
 +      tag: v1.20.2
        pullPolicy: IfNotPresent
        pullSecrets: []
      extraNamespaces: []
-@@ -66,7 +66,7 @@
-     enabled: true
-     extraRules: []
-     image:
--      repository: openpolicyagent/gatekeeper-crds
-+      repository: rancher/mirrored-openpolicyagent-gatekeeper-crds
-       tag: v3.10.0
-       pullPolicy: IfNotPresent
-       pullSecrets: []
 @@ -80,7 +80,7 @@
    probeWebhook:
      enabled: true
@@ -29,15 +20,6 @@
        tag: 7.83.1
        pullPolicy: IfNotPresent
        pullSecrets: []
-@@ -104,7 +104,7 @@
-     extraRules: []
-     enabled: false
-     image:
--      repository: openpolicyagent/gatekeeper-crds
-+      repository: rancher/mirrored-openpolicyagent-gatekeeper-crds
-       tag: v3.10.0
-       pullPolicy: IfNotPresent
-       pullSecrets: []
 @@ -121,10 +121,13 @@
      runAsGroup: 999
      runAsNonRoot: true
@@ -45,18 +27,18 @@
 -image:
 -  repository: openpolicyagent/gatekeeper
 -  crdRepository: openpolicyagent/gatekeeper-crds
--  release: v3.10.0
+-  release: v3.11.0
 +images:
 +  gatekeeper:
-+    repository: rancher/mirrored-openpolicyagent-gatekeeper
-+    tag: v3.10.0
++    repository: openpolicyagent/gatekeeper
++    tag: v3.11.0
 +  gatekeepercrd:
-+    repository: rancher/mirrored-openpolicyagent-gatekeeper-crds
-+    tag: v3.10.0
++    repository: openpolicyagent/gatekeeper-crds
++    tag: v3.11.0
    pullPolicy: IfNotPresent
    pullSecrets: []
  podAnnotations: {}
-@@ -159,7 +162,7 @@
+@@ -160,7 +163,7 @@
            weight: 100
    topologySpreadConstraints: []
    tolerations: []
@@ -64,20 +46,11 @@
 +  nodeSelector: {}
    resources:
      limits:
-       cpu: 1000m
-@@ -192,7 +195,7 @@
-   disableCertRotation: true
-   affinity: {}
-   tolerations: []
--  nodeSelector: {kubernetes.io/os: linux}
-+  nodeSelector: {}
-   resources:
-     limits:
-       cpu: 1000m
-@@ -232,10 +235,16 @@
- pdb:
-   controllerManager:
-     minAvailable: 1
+       memory: 512Mi
+@@ -235,6 +238,14 @@
+ disabledBuiltins: ["{http.send}"]
+ psp:
+   enabled: true
 +global:
 +  cattle:
 +    systemDefaultRegistry: ""
@@ -86,10 +59,6 @@
 +  kubectl:
 +    repository: rancher/kubectl
 +    tag: v1.20.2
- service: {}
- disabledBuiltins: ["{http.send}"]
--psp:
--  enabled: true
  upgradeCRDs:
    enabled: true
    extraRules: []
